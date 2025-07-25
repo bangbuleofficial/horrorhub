@@ -1,147 +1,305 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HORROR FEED INDONESIA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-:root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(20, 14.3%, 4.1%);
-  --muted: hsl(60, 4.8%, 95.9%);
-  --muted-foreground: hsl(25, 5.3%, 44.7%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(20, 14.3%, 4.1%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 14.3%, 4.1%);
-  --border: hsl(20, 5.9%, 90%);
-  --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(60, 4.8%, 95.9%);
-  --secondary-foreground: hsl(24, 9.8%, 10%);
-  --accent: hsl(60, 4.8%, 95.9%);
-  --accent-foreground: hsl(24, 9.8%, 10%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(20, 14.3%, 4.1%);
-  --radius: 0.5rem;
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #111;
+      color: white;
+    }
 
-  /* Horror theme specific colors */
-  --netflix-bg: hsl(0, 0%, 7.8%);
-  --horror-red: hsl(0, 73%, 41%);
-  --horror-amber: hsl(42, 96%, 48%);
-  --gray-850: hsl(215, 20%, 12%);
-}
+    header {
+      background-color: #000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid red;
+    }
 
-.dark {
-  --background: hsl(240, 10%, 3.9%);
-  --foreground: hsl(0, 0%, 98%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
-  --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(240, 3.7%, 15.9%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 62.8%, 30.6%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
-  --radius: 0.5rem;
-}
+    header h1 {
+      color: red;
+      font-weight: 800;
+      margin: 0;
+    }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      background-color: #4a0c0c;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
 
-  body {
-    @apply font-sans antialiased bg-netflix text-white overflow-x-hidden;
-    background-color: var(--netflix-bg);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-  }
-}
+    nav a:hover {
+      background-color: #a00;
+    }
 
-@layer utilities {
-  .bg-netflix {
-    background-color: var(--netflix-bg);
-  }
-  
-  .bg-horror {
-    background-color: var(--horror-red);
-  }
-  
-  .text-horror {
-    color: var(--horror-red);
-  }
-  
-  .bg-gray-850 {
-    background-color: var(--gray-850);
-  }
-  
-  .border-horror {
-    border-color: var(--horror-red);
-  }
-  
-  .hover-scale:hover {
-    transform: scale(1.05);
-  }
-  
-  .content-card:hover {
-    transform: translateY(-4px);
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-}
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px;
+    }
 
-@keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(10px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
-}
+    h2 {
+      font-size: 24px;
+      border-left: 5px solid red;
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
 
-@keyframes slideUp {
-  from { 
-    transform: translateY(100%); 
-  }
-  to { 
-    transform: translateY(0); 
-  }
-}
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
+    .card {
+      background: linear-gradient(145deg, #1c1c1c, #0f0f0f);
+      padding: 20px;
+      border-radius: 12px;
+      flex: 1 1 280px;
+      min-width: 280px;
+      max-width: 360px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
 
-.animate-slide-up {
-  animation: slideUp 0.3s ease-out;
-}
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+    }
 
-.animate-pulse-slow {
-  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
+    .badge {
+      background-color: red;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      margin-right: 10px;
+      font-weight: 600;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .filters {
+      margin-top: 40px;
+    }
+
+    .filters h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .filters .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .filters button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #2c2c2c;
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .filters button.active, .filters button:hover {
+      background-color: red;
+      color: #fff;
+    }
+
+    .generate-button {
+      background-color: red;
+      padding: 15px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      margin: 30px 0;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .generate-button:hover {
+      background-color: #a00;
+    }
+
+    .downloads {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .download-card {
+      background-color: #1c1c1c;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      flex: 1 1 200px;
+      min-width: 200px;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .download-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .download-card a {
+      background-color: limegreen;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .download-card a:hover {
+      background-color: #228B22;
+    }
+
+    @media (max-width: 1024px) {
+      .cards,
+      .downloads {
+        flex-direction: column;
+        gap: 25px;
+      }
+      .card, .download-card {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px 5px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>HORROR FEED</h1>
+    <nav>
+      <a href="#">Beranda</a>
+      <a href="#">TikTok</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>🔥 Trending Hari Ini</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Horror Image">
+        <h3>Penampakan Misterius di Kos Jakarta</h3>
+        <p>Mahasiswa mengalami kejadian aneh di kos. Suara langkah kaki malam hari dan pintu terbuka sendiri.</p>
+        <div>
+          <span class="badge">TIKTOK</span><span class="timestamp">5 menit lalu</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Horror Image">
+        <h3>Ritual Santet di Desa Terpencil</h3>
+        <p>Dokumenter tentang praktik santet di Jawa Tengah dengan kesaksian korban.</p>
+        <div>
+          <span class="badge">YOUTUBE</span><span class="timestamp">12 menit lalu</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Horror Image">
+        <h3>Foto Pocong di Kuburan Tengah Kota</h3>
+        <p>Foto ziarah kubur menunjukkan sosok putih mencurigakan di belakang makam.</p>
+        <div>
+          <span class="badge">INSTAGRAM</span><span class="timestamp">18 menit lalu</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <h3>Gaya Horror:</h3>
+      <div class="buttons">
+        <button class="active" type="button">Realistis</button>
+        <button type="button">Gothic</button>
+        <button type="button">Dark</button>
+        <button type="button">Vintage</button>
+      </div>
+
+      <h3 style="margin-top: 20px;">Tema Horror Indonesia:</h3>
+      <div class="buttons">
+        <button type="button">Pocong</button>
+        <button type="button">Kuntilanak</button>
+        <button type="button">Tuyul</button>
+        <button type="button">Santet</button>
+      </div>
+    </div>
+
+    <button class="generate-button" type="button">🎨 Generate Gambar Horror</button>
+
+    <div class="downloads">
+      <div class="download-card">
+        <img src="https://via.placeholder.com/200x120" alt="Generated">
+        <a href="#" download>📥 Download</a>
+      </div>
+      <div class="download-card">
+        <img src="https://via.placeholder.com/200x120" alt="Generated">
+        <a href="#" download>📥 Download</a>
+      </div>
+      <div class="download-card">
+        <img src="https://via.placeholder.com/200x120" alt="Generated">
+        <a href="#" download>📥 Download</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
